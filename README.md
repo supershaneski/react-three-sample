@@ -13,7 +13,6 @@ Also the possibility or limitations of making the objects totally dynamic (can c
 
 
 ## Usage
-=====
 
 An example on how to use:
 
