@@ -23,6 +23,8 @@ export default class SandBox1 extends React.Component {
         this.state = {
             objects: [],
         }
+
+        this.updateObjects = this.updateObjects.bind(this);
     }
 
     componentDidMount() {
@@ -117,7 +119,7 @@ export default class SandBox1 extends React.Component {
                 </ThreeContainer>
             </section>
             <section className="control">
-                <button onClick={this.updateObjects.bind(this)}>Animate Objects</button>
+                <button onClick={this.updateObjects}>Animate Objects</button>
             </section>
             <style jsx>
             {`

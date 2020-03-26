@@ -6,7 +6,7 @@ The React project was initially created using [Next.JS](https://nextjs.org/).
 
 
 ## Description
-This project is more of an exercise in coding.<br>
+This project is more of an exercise in coding.<br><br>
 I wanted to make my own React bindings for Three.JS that will treat objects
 as components that can be viewed in the debugger.<br>
 Also the possibility or limitations of making the objects totally dynamic (can change the props), in React way (using states).

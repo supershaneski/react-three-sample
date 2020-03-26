@@ -23,8 +23,22 @@ export default class SandBox extends React.Component {
             toggleCamera: false,
         };
         
-        this.updateControl.bind(this);
-        this.selectObject.bind(this);
+        this.updateControl = this.updateControl.bind(this);
+        this.selectObject = this.selectObject.bind(this);
+
+        this.addObject = this.addObject.bind(this);
+        this.setObjectType = this.setObjectType.bind(this);
+        this.setObjectColor = this.setObjectColor.bind(this);
+        this.handleTexture = this.handleTexture.bind(this);
+
+        this.handlePositionX = this.handlePositionX.bind(this);
+        this.handlePositionY = this.handlePositionY.bind(this);
+        this.handlePositionZ = this.handlePositionZ.bind(this);
+
+        this.setSelectedTexture = this.setSelectedTexture.bind(this);
+        this.setSelectedColor = this.setSelectedColor.bind(this);
+        this.deleteSelected = this.deleteSelected.bind(this);
+
     }
     
     updateControl(callback) {
@@ -117,26 +131,20 @@ export default class SandBox extends React.Component {
     }
 
     setSelectedColor() {
-        //this.state.color
-        //this.state.selected
         
         const objects = this.state.objects.splice(0);
-        //console.log(objects);
         objects.some((object) => {
             if(object.props.id.indexOf(this.state.selected) >= 0){
                 //object.props.color = this.state.color;
                 return true;
             }
         });
-        //console.log(objects);
-
+        
         this.mycontrol.setColor(this.state.selected, this.state.color);
         
     }
 
     setSelectedTexture() {
-        //this.state.texture
-        //this.state.selected
         this.mycontrol.setTexture(this.state.selected, this.state.texture);
     }
     
@@ -183,12 +191,12 @@ export default class SandBox extends React.Component {
             </section>
             <section>
 
-            <button onClick={this.addObject.bind(this)}>Add Object</button>
+            <button onClick={this.addObject}>Add Object</button>
             &nbsp;
             <label><span>Type:</span>
             &nbsp;
             <select
-            onChange={this.setObjectType.bind(this)}
+            onChange={this.setObjectType}
             value={this.state.type}
             >
             {
@@ -204,7 +212,7 @@ export default class SandBox extends React.Component {
             <label><span>Color:</span>
             &nbsp;
             <select 
-            onChange={this.setObjectColor.bind(this)}
+            onChange={this.setObjectColor}
             value={this.state.color}
             >
             {
@@ -220,7 +228,7 @@ export default class SandBox extends React.Component {
             <label><span>Texture:</span>
             &nbsp;
             <select
-            onChange={this.handleTexture.bind(this)}
+            onChange={this.handleTexture}
             value={this.state.texture}
             >
             {
@@ -242,7 +250,7 @@ export default class SandBox extends React.Component {
                 maxLength={3}
                 increment={1}
                 value={this.state.position.x}
-                onChange={this.handlePositionX.bind(this)}
+                onChange={this.handlePositionX}
             />
             </label>
             &nbsp;
@@ -255,7 +263,7 @@ export default class SandBox extends React.Component {
                 maxLength={3}
                 increment={1}
                 value={this.state.position.y}
-                onChange={this.handlePositionY.bind(this)}
+                onChange={this.handlePositionY}
             />
             </label>
             &nbsp;
@@ -268,7 +276,7 @@ export default class SandBox extends React.Component {
                 maxLength={3}
                 increment={1}
                 value={this.state.position.z}
-                onChange={this.handlePositionZ.bind(this)}
+                onChange={this.handlePositionZ}
             />
             </label>
             </section>
@@ -278,15 +286,15 @@ export default class SandBox extends React.Component {
                 <React.Fragment>
                     <button 
                         className="selected"
-                        onClick={this.setSelectedTexture.bind(this)}
+                        onClick={this.setSelectedTexture}
                     >Set Texture</button>
                     <button 
                         className="selected"
-                        onClick={this.setSelectedColor.bind(this)}
+                        onClick={this.setSelectedColor}
                     >Set Color</button>
                     <button 
                         className="selected"
-                        onClick={this.deleteSelected.bind(this)}
+                        onClick={this.deleteSelected}
                     >Delete Selected</button>
                 </React.Fragment>                
             }        
